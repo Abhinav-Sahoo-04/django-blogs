@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <span><p>My</p>
+            <h1>Blog</h1>
+        </span>
+        <div class="login-container">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+        </div>
+    </nav>
+    <ul class="nav-links">
+        <li>World</li>
+        <li>U.S</li>
+        <li>Technology</li>
+        <li>Design</li>
+        <li>Culture</li>
+        <li>Business</li>
+        <li>Politics</li>
+        <li>Opinion</li>
+        <li>Science</li>
+        <li>Health</li>
+        <li>Style</li>
+        <li>Travel</li>
+    </ul>
+    <div class="img-container">
+        <img src="{% static 'images/blogBG.jpg' %}" alt="">
+        <div class="img-info">
+            <h1>The title of the long info</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore, consequatur suscipit. Qui at placeat deleniti id atque ad quam laboriosam rem, molestias autem excepturi rerum perspiciatis ut distinctio nostrum! Ipsa!</p>
+            <a href="#">Continue reading ...</a>
+        </div>
+    </div>
+    <div class="post-container">
+        <div class="post">
+            <h2>Post title</h2>
+            <span>date</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, aliquid aut eaque tempora iure soluta harum </p>
+        </div>
+        <div class="post">
+            <h2>Post title</h2>
+            <span>date</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, aliquid aut eaque tempora iure soluta harum </p>
+        </div>
+    </div>
+    <div class="blog-articles-container">
+        <div class="blog-articles">
+            <div class="article">
+                <h1>Sample Article</h1>
+                <span>Date</span>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate repellendus tempore reprehenderit possimus vel quae aliquam dolore autem quidem nobis? Cupiditate consequuntur possimus soluta adipisci iusto assumenda maiores amet saepe?</p>
+            </div>
+            <div class="article">
+                <h1>Sample Article</h1>
+                <span>Date</span>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate repellendus tempore reprehenderit possimus vel quae aliquam dolore autem quidem nobis? Cupiditate consequuntur possimus soluta adipisci iusto assumenda maiores amet saepe?</p>
+            </div>
+            <div class="article">
+                <h1>Sample Article</h1>
+                <span>Date</span>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate repellendus tempore reprehenderit possimus vel quae aliquam dolore autem quidem nobis? Cupiditate consequuntur possimus soluta adipisci iusto assumenda maiores amet saepe?</p>
+            </div>
+            <div class="article">
+                <h1>Sample Article</h1>
+                <span>Date</span>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate repellendus tempore reprehenderit possimus vel quae aliquam dolore autem quidem nobis? Cupiditate consequuntur possimus soluta adipisci iusto assumenda maiores amet saepe?</p>
+            </div>
+        </div>
+        <div class="personal-info">
+            <div class="about">
+                <h1>About</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam cupiditate rem animi vel eius voluptatum temporibus error, velit nemo quod suscipit ad quidem mollitia repellendus tempora, ex libero. At, delectus!</p>
+            </div>
+            <ul class="follow-us">
+                <h1>Follow-us</h1>
+                <li>Github</li>
+                <li>Linked In</li>
+            </ul>
+        </div>
+    </div>
+    <footer class="footer">
+        <img src="{% static 'images/selfImg1.jpg' %}" alt="my Image">
+        <span><p>by</p><h1>Abhinav Sahoo</h1></span>
+    </footer>
+</body>
+</html>
