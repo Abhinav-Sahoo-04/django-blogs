@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"><link rel="stylesheet" href="{% static 'css/get_by_category.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}">
+
+            <span>
+                <p>My</p>
+                <h1>Blog</h1>
+            </span>
+        </a>
+        <div class="login-container">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+        </div>
+    </nav>
+    <ul class="nav-links">
+        {% for cat in categories %}
+        <li><a href="{% url 'get_by_category' cat.id %}">{{ cat.category_name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h1 class="category-head">
+        Category - <span>{{category}}</span>
+    </h1>
+    {% if blog %}
+    <div class="blog-article-category">
+        <div class="blog-articles">
+            {% for article in blog %}
+            <div class="article">
+                <h1>{{article.title}}</h1>
+                <span>{{article.updated_at | timesince}} ago  | by {{ article.author }}</span>
+                <p>{{article.short_description | truncatewords:25}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else%}
+    <p class="no-data-found">no data found...</p>
+    {% endif%}
+    <footer class="footer">
+        <img src="{% static 'images/selfImg1.jpg' %}" alt="my Image">
+        <span>
+            <p>by</p>
+            <h1>Abhinav Sahoo</h1>
+        </span>
+    </footer>
+</body>
+</html>

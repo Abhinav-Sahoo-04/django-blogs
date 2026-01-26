@@ -1,15 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
-class Catagory(models.Model):
-    catagory_name=models.CharField(max_length=50,unique=True)
+class Category(models.Model):
+    category_name=models.CharField(max_length=50,unique=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural='catagories'
+        verbose_name_plural='categories'
     
     def __str__(self):
-        return self.catagory_name
+        return self.category_name
 
 STATUS_CHOICES=(
     ("Draft","Draft"),
@@ -19,7 +19,7 @@ STATUS_CHOICES=(
 class Blog(models.Model):
     title=models.CharField(max_length=100)
     slug=models.SlugField(max_length=150,unique=True,blank=True)
-    catagory=models.ForeignKey(Catagory,on_delete=models.CASCADE)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     featured_image=models.ImageField(upload_to='uploads/%Y/%m/%d')
     short_description=models.TextField(max_length=500)
