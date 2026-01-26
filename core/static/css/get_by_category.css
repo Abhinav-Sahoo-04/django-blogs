@@ -106,13 +106,7 @@ html::-webkit-scrollbar-track{
 .category-head span{
     color: var(--navy);
 }
-.blog-article-category{
-    height: fit-content;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    padding-inline: 100px;
-}
+
 .blog-articles{
     height: 100%;
     width: 70%;

@@ -1,0 +1,49 @@
+<!-- this is for the header -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}">
+            <span>
+                <p>My</p>
+                <h1>Blog</h1>
+            </span>
+        </a>
+        <form action="{% url 'search' %}" method="GET" class="blog-search">
+                <input type="search" placeholder="Search here..." name="keyword" value="{{ keyword }}" >
+                <button type="submit">Search</button>
+            </form>
+        <div class="login-container">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="register">Register</a>
+        </div>
+    </nav>
+    <ul class="nav-links">
+        {% for cat in categories %}
+        <li><a href="{% url 'get_by_category' cat.id %}">{{ cat.category_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% block content %}
+<!-- this is the main content -->
+{% endblock %}
+
+<!-- this is for the footer -->
+       <footer class="footer">
+        <img src="{% static 'images/selfImg1.jpg' %}" alt="my Image">
+        <span>
+            <p>by</p>
+            <h1>Abhinav Sahoo</h1>
+        </span>
+    </footer>
+</body>
+
+</html>

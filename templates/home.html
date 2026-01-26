@@ -1,33 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-
-<body>
-    <nav class="navbar">
-        <a href="{% url 'home' %}">
-            
-            <span>
-                <p>My</p>
-                <h1>Blog</h1>
-            </span>
-        </a>
-        <div class="login-container">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="register">Register</a>
-        </div>
-    </nav>
-    <ul class="nav-links">
-        {% for cat in categories %}
-        <li><a href="{% url 'get_by_category' cat.id %}">{{ cat.category_name }}</a></li>
-        {% endfor %}
-    </ul>
+{% block content %}
     {% for blog in featured_blog %}
     {% if forloop.first %}
     <div class="img-container">
@@ -35,7 +8,7 @@
         <div class="img-info">
             <h1>{{blog.title}}</h1>
             <p>{{blog.short_description | truncatewords:25}}</p>
-            <a href="#">Continue reading ...</a>
+            <a href="{% url 'blogs' blog.slug %}">Continue reading ...</a>
         </div>
     </div>
     {% endif %}
@@ -51,7 +24,7 @@
             <div class="post">
                 <img src="{{ blog.featured_image.url}}" alt="">
                 <div class="post-info">
-                    <h2>{{blog.title}}</h2>
+                    <h2> <a href="{% url 'blogs' blog.slug %}">{{blog.title}}</a></h2>
                     <span>{{blog.updated_at | timesince}} ago | by {{blog.author}}</span>
                     <p>{{blog.short_description | truncatewords:25}}</p>
                 </div>
@@ -64,7 +37,7 @@
         <div class="blog-articles">
             {% for article in blog %}
             <div class="article">
-                <h1>{{article.title}}</h1>
+                <h1><a href="{% url 'blogs' article.slug %}">{{article.title}}</a></h1>
                 <span>{{article.updated_at | timesince}} ago  | by {{ article.author }}</span>
                 <p>{{article.short_description | truncatewords:25}}</p>
             </div>
@@ -84,13 +57,4 @@
             </ul>
         </div>
     </div>
-    <footer class="footer">
-        <img src="{% static 'images/selfImg1.jpg' %}" alt="my Image">
-        <span>
-            <p>by</p>
-            <h1>Abhinav Sahoo</h1>
-        </span>
-    </footer>
-</body>
-
-</html>
+  {% endblock %}

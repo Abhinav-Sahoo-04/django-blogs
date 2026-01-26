@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="category-head">
-        Category - <span>{{category}}</span>
+<h1 class="category-head">
+        Search Keyword  - <span>{{keyword}}</span>
     </h1>
-    {% if blog %}
+    {% if blogs %}
     <div class="blog-article-category">
         <div class="blog-articles">
-            {% for article in blog %}
+            {% for article in blogs %}
             <div class="article">
                 <h1><a href="{% url 'blogs' article.slug %}">{{article.title}}</a></h1>
-
                 <span>{{article.updated_at | timesince}} ago  | by {{ article.author }}</span>
                 <p>{{article.short_description | truncatewords:25}}</p>
             </div>
