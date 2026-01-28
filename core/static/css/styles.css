@@ -20,7 +20,7 @@ body {
 
 
 .navbar {
-  height: 50px;
+  height: 65px;
   background-color: var(--white);
   display: flex;
   justify-content: space-between;
@@ -38,6 +38,18 @@ body {
 }
 .navbar span p {
   color: var(--orange-1);
+}
+.login-container{
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container p{
+  margin-inline: 20px;
+  font-size:14px;
+  height: 100%;
+  
 }
 .navbar .login {
   text-decoration: none;
@@ -396,6 +408,9 @@ body {
   font-size: 24px;
   margin-block: 20px;
  }
+ .blog-para p{
+  margin-block: 20px;
+ }
  .blog-search{
   height: fit-content;
   width:  fit-content;
@@ -522,4 +537,49 @@ body {
  .category-list ul li a{
   color:var(--black);
   text-decoration: none;
+ }
+
+
+ /* this is for register.html */
+
+ .register-heading{
+  margin-block: 50px;
+  width: 100%;
+  font-size: 50px;
+  background-color: var(--navy);
+  color: var(--white);
+  text-align: center;
+  line-height: 100px;
+ }
+ .register-form-wrapper{
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+ }
+  .register-form {
+    padding: 30px;
+    height: fit-content;
+    border-radius: var(--button-bdr);
+    width: fit-content;
+    border: 1px solid var(--orange-1);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+ .register-form button{
+    padding: 7px 15px;
+    margin-block: 10px;
+    background-color: var(--white);
+    border: 1px solid var(--orange-1);
+    outline: none;
+    color: var(--navy);
+    border-radius: var(--button-bdr);
+    transition: all ease 0.3s;
+ }
+ .register-form button:hover{
+    background-color: var(--orange-1);
+    border: 1px solid var(--navy);
+    color: var(--white);
+
  }
