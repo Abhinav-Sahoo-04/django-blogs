@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-container">
+    <span>Loged in as <strong>{{user}}</strong></span>
+    <div class="dashboard">
+        {% include 'dashboard/sidebar.html' %}
+        <div class="dashboard-right">
+            <div class="category-count count">
+                <h3>All Category</h3>
+                <span>
+                    <h2 >{{category_count}}</h2>
+                </span>
+            </div>
+            <div class="blog-count count">
+                <h3>All Posts</h3>
+                <span>
+                    <h2>{{posts_count}}</h2>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

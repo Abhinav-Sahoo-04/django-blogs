@@ -1,0 +1,10 @@
+<div class="dashboard-left">
+    <ul class="dashboard-list">
+        <li class="{% if  request.path == '/dashboard/'  %}dash-selected{% endif %}"><a
+                href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="{% if  request.path == '/dashboard/categories/'  %}dash-selected{% endif %}"><a
+                href="{% url 'categories' %}">Categories</a></li>
+        <li class="{% if  request.path == '/dashboard/user/'  %}dash-selected{% endif %}"><a href="#">User</a></li>
+        <li class="{% if  request.path == '/dashboard/blog/'  %}dash-selected{% endif %}"><a href="#">Blog</a></li>
+    </ul>
+</div>
