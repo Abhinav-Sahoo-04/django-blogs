@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="dashboard-container">
+    <span>Loged in as <strong>{{user}}</strong></span>
+    <div class="dashboard">
+        {% include 'dashboard/sidebar.html' %}
+        <div class="dashboard-right">
+            <form style="height: fit-content; width: 700px; display: flex; flex-direction: column; row-gap: 20px;"  action="{% url 'edit_post' post.id %}" method="POST">
+                <h1>Edit Posts</h1>
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn-uni">Change</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
