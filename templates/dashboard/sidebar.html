@@ -1,10 +1,13 @@
 <div class="dashboard-left">
     <ul class="dashboard-list">
-        <li class="{% if  request.path == '/dashboard/'  %}dash-selected{% endif %}"><a
+        <li class="{% if '/dashboard/' ==  request.path  %}dash-selected{% endif %}"><a
                 href="{% url 'dashboard' %}">Dashboard</a></li>
-        <li class="{% if  request.path == '/dashboard/categories/'  %}dash-selected{% endif %}"><a
+        <li class="{% if '/categories/' in  request.path  %}dash-selected{% endif %}"><a
                 href="{% url 'categories' %}">Categories</a></li>
-                <li class="{% if  request.path == '/dashboard/posts/'  %}dash-selected{% endif %}"><a href="{% url 'posts' %}">Posts</a></li> 
-        <li class="{% if  request.path == '/dashboard/user/'  %}dash-selected{% endif %}"><a href="#">User</a></li>
+                <li class="{% if '/posts/' in request.path  %}dash-selected{% endif %}"><a href="{% url 'posts' %}">Posts</a></li> 
+            {% if perms.auth.view_user %}
+        <li class="{% if '/user/' in request.path  %}dash-selected{% endif %}"><a href="{% url 'user' %}">User</a></li>
+            {% endif %}
+        <li ><a href="#">Logout</a></li>
     </ul>
 </div>

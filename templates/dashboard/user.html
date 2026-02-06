@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard">
+        {% include 'dashboard/sidebar.html' %}
+        {% if perms.auth.view_user %}
+        <div class="cat-table">
+            <span style="display: flex; align-items: center; justify-content: space-between;">
+                <h1>All Users</h1> <a
+                    style="padding: 10px 20px ; background-color:navy; border-radius: 5px; text-decoration: none; color:white;"
+                    href="{% url 'add_user' %}"><i style="margin-right: 10px;" class="fa-solid fa-plus"></i>add User</a>
+            </span>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Userame</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                    <th>Staff</th>
+                    <th>Superuser</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in users %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.username}}</td>
+                    <td>{{i.first_name}}</td>
+                    <td>{{i.email}}</td>
+                    <td style="text-align: center;">
+                        {% if i.is_active %}
+                        <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i>
+                        {% else %}
+                        <i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i>
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                        {% if i.is_staff %}
+                        <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i>
+                        {% else %}
+                        <i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i>
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                        {% if i.is_superuser %}
+                        <i class="fa-solid fa-circle-check" style="color: #63E6BE;"></i>
+                        {% else %}
+                        <i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'edit_user' i.id %}"><i class="fa-solid fa-pen-to-square"
+                                style="color: #63E6BE;"></i></a>
+                        &nbsp;
+                        <a href="{% url 'delete_user' i.id %}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                    </td></a>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+        <h5>you do not have the permission to view this page</h5>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

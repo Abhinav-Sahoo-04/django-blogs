@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="dashboard-container">
+    <span>Loged in as <strong>{{user}}</strong></span>
+    <div class="dashboard">
+        {% include 'dashboard/sidebar.html' %}
+        {% if perms.auth.view_user %}
+        <div class="dashboard-right">
+            <form style="height: fit-content; width: 700px; display: flex; flex-direction: column; row-gap: 20px;"  action="{% url 'add_user' %}" method="POST" >
+                <h1>Add Users</h1>
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn-uni">Add</button>
+            </form>
+        </div>
+        {% else %}
+        <h5>You do not have permission to view this page</h5>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
