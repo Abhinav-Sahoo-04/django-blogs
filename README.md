@@ -1,5 +1,8 @@
 **📝 Blog Application**
 Live Demo: [https://abhinavsahoo.pythonanywhere.com/]
+Currently deployed on PythonAnywhere (free plan, temporary).  
+If the link is inactive, please run locally using the setup instructions below.
+
 
 A Django-based blog application that allows users to create, manage, and search blog posts. It includes authentication, categories, dashboards, and role-based restrictions (e.g., managers cannot modify superuser accounts).
 
