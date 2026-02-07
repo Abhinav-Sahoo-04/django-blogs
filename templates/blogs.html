@@ -17,6 +17,28 @@
                 <p>{{single_blog.blog_body}}</p>
 
             </div>
+            {% if comments %}
+            <h3 class="comment-head">Comments ({{comments_count}})</h3>
+            <ul class="comment-section">
+                {% for comment in comments %}
+                <li>
+                    <h4>{{comment.comment}}</h4> 
+                    <small>by {{ comment.user}} {{comment.created_at | timesince}} ago</small>
+                </li>
+                {% endfor %}
+                {% else %}
+                <h4>No comments yet</h4>
+                {% endif %}
+            </ul>
+            {% if user.is_authenticated  %}
+            <form action="" method="POST" class="comment-form">
+                {% csrf_token %}
+                <textarea name="comment" placeholder="Add your comments here !"></textarea><br>
+                <button type="submit">Add<i class="fa-solid fa-paper-plane " style="color: #ffffff; margin-left: 10px;"></i></button>
+            </form>
+            {% else  %}
+            <h6><a href="{%  url 'login' %}">Login</a> required to write comments</h6>
+            {% endif %}
         </div>
         <div class="blog-right">
             <div class="blog-most-popular">
@@ -24,13 +46,13 @@
                 <ul class="most-popular-container">
                     {% for blog in featured_blog %}
                     <li class="popular-blog">
-                            <a href="{% url 'blogs' blog.slug %}" class="popular-blog-container">
-                                <img src="{{ blog.featured_image.url }}" alt="">
-                                <span>{{blog.title}}
-                                    <h5>{{blog.updated_at}}</h5>
-                                </span>
-                                
-                            </a>
+                        <a href="{% url 'blogs' blog.slug %}" class="popular-blog-container">
+                            <img src="{{ blog.featured_image.url }}" alt="">
+                            <span>{{blog.title}}
+                                <h5>{{blog.updated_at}}</h5>
+                            </span>
+
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -42,7 +64,7 @@
                 <h3>Categories</h3>
                 <ul>
                     {% for cat in categories %}
-                        <li class="category-list-item"><a href="{% url 'get_by_category' cat.id %}">{{cat}}</a></li>
+                    <li class="category-list-item"><a href="{% url 'get_by_category' cat.id %}">{{cat}}</a></li>
                     {% endfor %}
                 </ul>
             </div>

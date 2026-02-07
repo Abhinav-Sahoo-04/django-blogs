@@ -22,9 +22,9 @@
             </span>
         </a>
         <form action="{% url 'search' %}" method="GET" class="blog-search">
-                <input type="search" placeholder="Search here..." name="keyword" value="{{ keyword }}" >
+                <input type="search" placeholder="Search here..." name="keyword"  >
                 <button type="submit">Search</button>
-            </form>
+        </form>
         <div class="login-container">
             {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="login">Login</a>

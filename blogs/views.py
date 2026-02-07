@@ -1,7 +1,8 @@
 from django.shortcuts import render,get_object_or_404,redirect
 
-from blogs.models import Blog, Category
+from blogs.models import Blog, Category, Comment
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -17,14 +18,27 @@ def get_by_category(request,category_id):
 def blogs(request,slug):
     single_blog=get_object_or_404(Blog,slug=slug)
     featured_blog=Blog.objects.filter(is_featured=True).order_by("updated_at")
+    comments=Comment.objects.filter(blog=single_blog)
+    comments_count=comments.count()
+    if request.method=="POST":
+        comment=Comment()
+        comment.user=request.user
+        comment.blog=single_blog
+        comment.comment=request.POST['comment']
+        comment.save()
+        return HttpResponseRedirect(request.path_info)
+    print(comments_count)
     context={
         "single_blog":single_blog,
         "featured_blog":featured_blog,
+        "comments":comments,
+        "comments_count":comments_count,
     }
     return render(request,'blogs.html',context)
 
 def search(request):
     keyword=request.GET.get('keyword')
+    print(keyword)
     if len(keyword)==0:
         return redirect('home')
     else:
