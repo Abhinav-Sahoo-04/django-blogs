@@ -50,10 +50,13 @@
                         {% endif %}
                     </td>
                     <td>
+                        {% if not i.is_superuser%} 
                         <a href="{% url 'edit_user' i.id %}"><i class="fa-solid fa-pen-to-square"
                                 style="color: #63E6BE;"></i></a>
                         &nbsp;
                         <a href="{% url 'delete_user' i.id %}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                        {% else  %}
+                        {% endif %}
                     </td></a>
 
                 </tr>

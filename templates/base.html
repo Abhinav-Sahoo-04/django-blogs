@@ -22,7 +22,7 @@
             </span>
         </a>
         <form action="{% url 'search' %}" method="GET" class="blog-search">
-                <input type="search" placeholder="Search here..." name="keyword"  >
+                <input type="search" placeholder="Search here..." name="keyword" value="{{ keyword }}"  >
                 <button type="submit">Search</button>
         </form>
         <div class="login-container">

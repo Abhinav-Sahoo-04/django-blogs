@@ -38,12 +38,19 @@ def blogs(request,slug):
 
 def search(request):
     keyword=request.GET.get('keyword')
-    print(keyword)
     if len(keyword)==0:
         return redirect('home')
     else:
         blogs=Blog.objects.filter(Q(title__icontains=keyword) | Q(short_description__icontains=keyword) | Q(blog_body__icontains=keyword), status="Published" )
         context={
             "blogs":blogs,
+            "keyword":keyword,
         }
         return render(request,'search.html',context)
+    
+def most_popular(request):
+    blog=Blog.objects.filter(is_featured=True)
+    context={
+        "blog":blog,
+    }
+    return render(request,'most_popular.html',context)

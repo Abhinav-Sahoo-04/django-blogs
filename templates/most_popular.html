@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="popular-blog-page">
+        <h1 id="blog-head"><i class="fa-solid fa-fire fa-fade" style="color: #ffffff;"></i> Popular Posts</h1>
+        {% for i in blog %}
+        <div class="popular-blog-page-container {% if forloop.counter|divisibleby:2 %} reverse-flow {% endif %}">
+            <div class="popular-blog-page-img">
+                <img src="{{ i.featured_image.url }}" alt="">
+            </div>
+            <div class="popular-blog-page-desc">
+                <a id="blog-cat" href="{% url 'get_by_category' i.category_id %}">{{ i.category }}</a> 
+                <br>
+                <h1><a href="{% url 'blogs' i.slug %}">{{ i.title }}</a></h1>
+                <p>{{ i.short_description }}</p>
+                <small>by {{ i.author }} | {{ i.updated_at | timesince }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
